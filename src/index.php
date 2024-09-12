@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    header('Content-Type:text/html;charset=utf-8');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./shark.css">
     <title>Document</title>
@@ -18,19 +18,19 @@
     <div class="form-box">
 
         <div class="login-box">
-            <!-- ±ê?? -->
+            <!-- æ ‡?? -->
             <h1 class="title">
                 Sign in
             </h1>
-            <!-- Í¼Æ¬ºÐ×Ó -->
+            <!-- å›¾ç‰‡ç›’å­ -->
             <div class="img-box">
-                <!-- Í¼Æ¬ -->
+                <!-- å›¾ç‰‡ -->
                 <img src="./images/woodpecker.png" alt="">
             </div>
-            <!-- ÊäÈë¿òºÐ? -->
+            <!-- è¾“å…¥æ¡†ç›’? -->
             <div class="input-box">
                 <form action="index.php" method="POST">
-                    <!-- ÊäÈë? -->
+                    <!-- è¾“å…¥? -->
                     <input name="username" type="text">
                     <input name="password" type="text">
                     <input name="submit" type="submit"></input>
@@ -40,6 +40,7 @@
 
     </div>
     <p class="return"><?php
+header('Content-Type: text/html; charset=utf-8');
 if (isset($_POST['submit'])) {
 
     function error_die($msg)
@@ -55,7 +56,7 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
 
     if (strlen($username) != $userLen) {
-        error_die("²»ÊÇikun???");
+        error_die("ä¸æ˜¯ikun???");
     }
 
     $query = "SELECT * FROM information WHERE username = '$username' AND password = '$password'";
@@ -63,17 +64,17 @@ if (isset($_POST['submit'])) {
     $result = $link->query($query);
     
     if (!$result) {
-        die("áÛ·å²úÉúÐéÎ±µÄÓµ»¤»Æ»è¼ûÖ¤ò¯³ÏµÄÐÅÍ½!!");
+        die("å·…å³°äº§ç”Ÿè™šä¼ªçš„æ‹¥æŠ¤é»„æ˜è§è¯è™”è¯šçš„ä¿¡å¾’!!");
     }
     
     $row = $result->fetch_assoc();
 
     if ($row == false) {
-        error_die("²»ÊÇ¸çÃÇÓÃ»§ÃûºÍÃÜÂë²»¶Ô°¡");
+        error_die("ä¸æ˜¯å“¥ä»¬ç”¨æˆ·åå’Œå¯†ç ä¸å¯¹å•Š");
     } else {
         $name = $row['username'];
         $pass = $row['password'];
-        error_die("Ô­À´ÕæµÄÊÇÄã°¡~" . $name . "£¬¿ìÊÕÏÂÀ¤À¤µÄ×£¸£". $pass ."");
+        error_die("åŽŸæ¥çœŸçš„æ˜¯ä½ å•Š~" . $name . "ï¼Œå¿«æ”¶ä¸‹å¤å¤çš„ç¥ç¦". $pass ."");
     }
 }
 ?>
